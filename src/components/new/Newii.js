@@ -1,9 +1,12 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 
 function Newii() {
     return (
         <div>
-            <h2>hiiii!</h2>
+            <Route path="/">
+
+            </Route>
         </div> 
     )
 }

@@ -10,7 +10,6 @@ function Indexs(props) {
         <div>
           <Header user={props.user} Logout={props.Logout}/>
           <h2>Welcome, <span>{props.user.username}</span></h2>
-          <button onClick={props.Logout}>Logout</button>
           <CategoryComponent/>
         </div>
     )
