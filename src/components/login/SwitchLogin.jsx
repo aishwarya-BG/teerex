@@ -4,9 +4,10 @@ import Register from "./register";
 import classes from './switch.module.css';
 import {Route} from 'react-router-dom';
 
-const Switch = (props) => {
+const SwitchLogin = (props) => {
 
   const [isLogin, setIsLogin] = useState(true);
+  const [userid, setUserid] = useState("");
 
   const signuphandler = () =>
   {
@@ -32,11 +33,11 @@ const Switch = (props) => {
         <li className={classes.tab}>
           <a className = {classes.a} href="#login" onClick={signinhandler}>Sign In</a></li>
       </ul>
-      {isLogin && <Login/>}
+      {isLogin && <Login onSubmit={()=>console.log(userid)} setUserid={setUserid}/>}
       {!isLogin && <Register Registerform = {Registerform}/>}
     </div>
     </div>
   );
 }
 
-export default Switch;
+export default SwitchLogin;

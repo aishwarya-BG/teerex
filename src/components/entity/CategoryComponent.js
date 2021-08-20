@@ -31,7 +31,7 @@ function CategoryComponent(props)
             <h2 className={classes.h2}>Categories</h2>
             <ul className={classes.ul}>
                 {categorys.map(c=>(
-                    <li className={classes.li} key={c.categoryId} id={c.categoryName} onClick={()=>props.setId(c.categoryId)}>
+                    <li className={classes.li} key={c.categoryId} id={c.categoryName} onClick={()=>{props.setId(c.categoryId); props.setCategoryName(c.categoryName)}}>
                         {c.categoryName}
                     </li>
                 ))}

@@ -1,52 +1,48 @@
 import React, { useState } from "react";
-import Login from "./components/login/login";
-import Register from "./components/login/register";
-import './App.css';
-import Switch from "./components/login/switch";
-import Indexs from "./components/ProductPage/indexs";
-import UserComponent from "./components/entity/UserComponent";
-import { Route } from "react-router-dom";
+import "./App.css";
+import SwitchLogin from "./components/login/SwitchLogin";
+import Home from "./components/ProductPage/home";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Switch } from "react-router";
 import Newii from "./components/new/Newii";
 import Cart from "./components/cart/Cart";
 
+
 const App = (props) => {
+  const [user, setUser] = useState({ username: "" });
 
-  const [user, setUser] = useState({username: ""});
-  const [error, setError] = useState("");
+  const loginform = (id) => {
+    console.log(id);
+    
+  };
 
-  const loginform = details =>
-  {
-    console.log("Heyyy!");
-    setUser({
-      username:details.username
-    })
-
-  }
-
-  const Logout = (details) =>
-  {
+  const Logout = (details) => {
     console.log("Logout");
     setUser({
-      username:""
-    })
-  } 
+      username: "",
+    });
+  };
 
   return (
     <div className="App">
-      <Route path="/login">
-        <Switch/>
-      </Route>
-      <Route path="/home">
-        <Indexs user={user} Logout={Logout}/>
-      </Route>
-      <Route path="/newii">
-        <Newii/>
-      </Route>
-      <Route path="/cart">
-        <Cart/>
-      </Route>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login">
+            <SwitchLogin loginform={loginform}/>
+          </Route>
+          <Route excet path="/">
+            <Home user={user} Logout={Logout} />
+          </Route>
+          <Route path="/newii">
+            <Newii />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
-  ) 
-}
+  );
+};
 
 export default App;

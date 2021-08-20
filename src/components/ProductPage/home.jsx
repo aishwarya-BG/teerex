@@ -6,14 +6,14 @@ import Header from './Header';
 import classes from './index.module.css'
 
 
-function Indexs(props) {
+function Home(props) {
     return (
         <div>
-          <Header user={props.user} Logout={props.Logout}/>
+          <Header user={props.user} Logout={props.Logout} />
           <h2>Welcome, <span>{props.user.username}</span></h2>
           <ProductByCategory/>
         </div>
     )
 }
 
-export default Indexs;
+export default Home;

@@ -3,7 +3,7 @@ import classes from './Style.module.css';
 import loginImg from '../../assets/banner21.png';
 import { Link, useHistory } from "react-router-dom";
 
-function Login() 
+function Login(props) 
 {
     const [details, setDetails] = useState({username: "", password: ""});
 
@@ -28,10 +28,13 @@ function Login()
 
         const response = await fetch('http://localhost:8080/userapi/login', requestbody);
         const data = await response.json();
+        setUserdata(data);
 
         if(Object.keys(data).length>0)
         {
-            history.push("/home");
+            props.setUserid(userdata.userId);
+            console.log(data);
+            history.push("/");
         }
     }
 

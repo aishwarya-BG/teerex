@@ -14,15 +14,7 @@
       color: grey;
   
     }
-    h2.mens {
-      border-top:4px solid #21c465;
-    }
-    h2.womens {
-      border-top:4px solid  #21c465;
-    }
-    h2.kids {
-      border-top:4px solid  #21c465;
-    }
+ 
       
     ul{
         margin:0;
@@ -38,7 +30,7 @@
           padding: 4px 0;
           font-weight: bold;
           text-decoration: none;
-          font-size: 25px;
+          font-size: 20px;
     }
          
     a {
