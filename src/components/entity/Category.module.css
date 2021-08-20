@@ -7,64 +7,44 @@
   
     h2 {
       display: block;
-      padding: 20px 0 20px 0;
-      margin:0 0 10px 0;
-      text-align: center;
+      padding: 0px 0 0px 0;
+      margin:0 0 0px 0;
+      text-align: left;
       border-bottom: 1px solid #ccc;
-      color: grey;
+      color: rgb(36, 39, 38);
   
     }
- 
-      
-    ul{
-        margin:0;
-        padding:0;
-    }
 
-    li {
-          list-style-type: none;
-          display: block;
-          float:left;
-          color: rgb(36, 196, 156);
-          display: block;
-          padding: 4px 0;
-          font-weight: bold;
-          text-decoration: none;
-          font-size: 20px;
+    .li
+    {
+      padding: 20px 20 20px 20;
+      margin:0 0 20px 0;
+      display:block;
+        text-decoration:none;
+        padding:15px;
+        background: #dae0de;
+        color: #10a549;
+        font-size:20px;
+        float:left;
+        width:50%;
+        text-align:center;
+        cursor:pointer;
+        transition:.5s ease;
+  
     }
+    
+    li:hover
+    {
+      background:lighten(#20d190, 5%);
+      color: #ffffff
+    }
+    
+    li:active a
+    {
+        background: #15a886;
+        color:white;
+     }
+
          
-    a {
-            color: #21c465;
-            display: block;
-            padding: 4px 0;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 15px;
-           
-        }
 
-        a:hover {
-            color:lighten(#21c465,20%);
-          
-        }
    
-.products {
-          display: flex;
-          flex-wrap: wrap;
-        }
-
-        .product-card {
-          padding: 2%;
-          flex-grow: 1;
-          flex-basis: 16%;
-        
-          display: flex; /* so child elements can use flexbox stuff too! */
-        }
-
-        .product-image img {
-          max-width: 10%;
-        } 
-        
-        .product-info {
-          margin-top: auto;
-        }

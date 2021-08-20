@@ -22,23 +22,27 @@ function ProductByCategory() {
             <CategoryComponent setId={setId} setCategoryName={setCategoryName}/>
             </div>
             <div class="col-lg-8">
+            <br/>
             <h1>{categoryName}</h1>
+            <br/>
+            <div class="row">
             {products.map(item => {
                 return (
-                <div class="row">
                 <div class="col-sm-3">
-                <div class="card" styles="width: 18rem;">
-                <img class="card-img-top" alt="Card image cap" width/>
+                <div class="card" styles="width: 15rem;">
+                <img class="card-img-top" src={loginImg} alt="Card image cap" width="50px" height="50px"/>
                 <div class="card-body">
                 <h5 class="card-title">{item.productName}</h5>
                 <p class="card-text">Rs.{item.productPrize}</p>
-                <a href="#" class="btn btn-primary">Add to Cart!</a>
+                <a href="#" class="btn btn-success">Add to Cart!</a>
                 </div>
                 </div>
                 </div>
-                <br/>
-                </div> )
-            })}
+
+                 )
+            }
+            )}
+            </div>
             </div>
         </div>
     )

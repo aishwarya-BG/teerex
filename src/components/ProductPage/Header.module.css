@@ -15,11 +15,11 @@
     z-index: 10;
   }
 
-  .header img {
+  .img {
     width: 5%;
-    height: 4rem;
-    object-fit: cover;
-    object-position: left;
+    height: 6rem;
+    object-fit:contain;
+    object-position:1em;
   }
 
   .header h1 {

@@ -32,8 +32,8 @@ function Login(props)
 
         if(Object.keys(data).length>0)
         {
-            props.setUserid(userdata.userId);
-            console.log(data);
+            props.setUserid(details.username);
+            console.log(details.username);
             history.push("/");
         }
     }

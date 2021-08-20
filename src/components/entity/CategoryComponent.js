@@ -28,10 +28,12 @@ function CategoryComponent(props)
 
     return (
         <div className={classes.catback}>
-            <h2 className={classes.h2}>Categories</h2>
-            <ul className={classes.ul}>
+            {/*<h2 className={classes.h2} >Categories</h2>*/}
+            <br/>
+            <br/><br/><br/>
+            <ul class="list-group">
                 {categorys.map(c=>(
-                    <li className={classes.li} key={c.categoryId} id={c.categoryName} onClick={()=>{props.setId(c.categoryId); props.setCategoryName(c.categoryName)}}>
+                    <li className = {classes.li} class="list-group-item" key={c.categoryId} id={c.categoryName} onClick={()=>{props.setId(c.categoryId); props.setCategoryName(c.categoryName)}}>
                         {c.categoryName}
                     </li>
                 ))}
