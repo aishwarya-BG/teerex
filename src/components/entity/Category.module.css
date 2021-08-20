@@ -1,0 +1,78 @@
+
+
+    .catback {
+      text-decoration: none;
+    }
+  
+  
+    h2 {
+      display: block;
+      padding: 20px 0 20px 0;
+      margin:0 0 10px 0;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      color: grey;
+  
+    }
+    h2.mens {
+      border-top:4px solid #21c465;
+    }
+    h2.womens {
+      border-top:4px solid  #21c465;
+    }
+    h2.kids {
+      border-top:4px solid  #21c465;
+    }
+      
+    ul{
+        margin:0;
+        padding:0;
+    }
+
+    li {
+          list-style-type: none;
+          display: block;
+          float:left;
+          color: rgb(36, 196, 156);
+          display: block;
+          padding: 4px 0;
+          font-weight: bold;
+          text-decoration: none;
+          font-size: 25px;
+    }
+         
+    a {
+            color: #21c465;
+            display: block;
+            padding: 4px 0;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 15px;
+           
+        }
+
+        a:hover {
+            color:lighten(#21c465,20%);
+          
+        }
+   
+.products {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .product-card {
+          padding: 2%;
+          flex-grow: 1;
+          flex-basis: 16%;
+        
+          display: flex; /* so child elements can use flexbox stuff too! */
+        }
+
+        .product-image img {
+          max-width: 10%;
+        } 
+        
+        .product-info {
+          margin-top: auto;
+        }
