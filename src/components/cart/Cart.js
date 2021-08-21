@@ -9,7 +9,6 @@ function Cart(props) {
         <Modal onClose={props.onClose}>
             <ul className={classes['cart-items']}>
                 <li>qwertyu</li>
-                <li>hsavkasygha</li>
             </ul>
             <div className={classes.total}>
                 <span>Total Amount</span>

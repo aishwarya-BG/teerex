@@ -37,7 +37,7 @@ function Header(props){
                 </Nav>:null}
                 {!localStorage.getItem("userinfo") &&
                 <Link to ="/login" className={classes.button2}>
-                <button type="button" class="btn btn-success">Login</button>
+                <button type="button" class="btn btn-success btn-lg">Login</button>
                 </Link>}
             </header>
    
