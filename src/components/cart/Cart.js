@@ -1,10 +1,25 @@
-import React from 'react'
+import  Modal from './Modal.js';
+import React from 'react';
+import classes from './Cart.module.css';
 
-function Cart() {
+function Cart(props) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
     return (
-        <div>
-            <h2>Hey Cart</h2>
-        </div>
+        <Modal onClose={props.onClose}>
+            <ul className={classes['cart-items']}>
+                <li>qwertyu</li>
+                <li>hsavkasygha</li>
+            </ul>
+            <div className={classes.total}>
+                <span>Total Amount</span>
+                <span>1000</span>
+            </div>
+            <div className={classes.actions}>
+                <button className={classes['button--alt']}onClick={props.onClose}>Close</button>
+                <button className={classes.button}>Order</button>
+            </div>
+        </Modal>
     )
 }
 

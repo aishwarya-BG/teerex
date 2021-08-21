@@ -18,12 +18,13 @@
     .li
     {
       padding: 20px 20 20px 20;
-      margin:0 0 20px 0;
+      margin:0 20px 20px 0;
       display:block;
+        
         text-decoration:none;
         padding:15px;
         background: #dae0de;
-        color: #10a549;
+        color: #173b2c;
         font-size:20px;
         float:left;
         width:50%;
@@ -36,12 +37,12 @@
     li:hover
     {
       background:lighten(#20d190, 5%);
-      color: #ffffff
+      color: #08fda7
     }
     
     li:active a
     {
-        background: #15a886;
+        background-color: #0dfc98;
         color:white;
      }
 

@@ -7,7 +7,7 @@ function Login(props)
 {
     const [details, setDetails] = useState({username: "", password: ""});
 
-    const [userdata, setUserdata] = useState([]);
+    const [userdata, setUserdata] = useState({items: [], isLoaded: false});
 
     let history = useHistory();
 
@@ -26,14 +26,14 @@ function Login(props)
             })
         }
 
-        const response = await fetch('http://localhost:8080/userapi/login', requestbody);
-        const data = await response.json();
-        setUserdata(data);
+        fetch('http://localhost:8080/userapi/login', requestbody)
+        .then(res=>res.json())
+        .then(result => setUserdata({items: result, isLoaded: true}))
 
-        if(Object.keys(data).length>0)
+        if(userdata.isLoaded)
         {
-            props.setUserid(details.username);
-            console.log(details.username);
+            {userdata.items.map(item => localStorage.setItem("userinfo", JSON.stringify({"userid": item.userId, "username": item.username})))}
+            console.log(localStorage.getItem("userid"));
             history.push("/");
         }
     }
