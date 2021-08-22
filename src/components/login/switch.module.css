@@ -51,7 +51,7 @@
     clear: both;
   }
   
-  li {
+  .list {
     display:block;
       text-decoration:none;
       padding:15px;
@@ -66,13 +66,13 @@
 
   }
   
-  li:hover
+  .list:hover
   {
     background:lighten(#20d190, 5%);
     color: #ffffff
   }
   
-  li:active a
+  .list:active a
   {
       background: #15a886;
       color:white;

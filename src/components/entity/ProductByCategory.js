@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import CategoryComponent from './CategoryComponent'
 import loginImg from '../../assets/banner21.png';
 import { useHistory } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import { CartActions } from '../../stores/CartSlice';
 
 
 function ProductByCategory() {
@@ -10,6 +12,8 @@ function ProductByCategory() {
     const [categoryName, setCategoryName] = useState("Tees for men");
     const [products, setProducts] = useState([]);
     const [cartData, setCartdata] = useState([]);
+
+    const dispatch = useDispatch();
 
     const history = useHistory();
 
@@ -22,12 +26,9 @@ function ProductByCategory() {
         .then(json => setProducts(json))
     }, [id]);
 
-    const cartHandler = (pId, price) =>
-    {
-        console.log(pId);
 
-        
-        
+    const cartHandler = (pId, price, name) =>
+    {
         if(user)
         {
         const requestbody = {
@@ -46,6 +47,8 @@ function ProductByCategory() {
             fetch('http://localhost:8080/cartapi/save', requestbody)
             .then(res=>res.json())
             .then(result => setCartdata(result))
+
+            dispatch(CartActions.addItem({id: pId, price: price, name:name}))
         }
         else
         {
@@ -70,7 +73,7 @@ function ProductByCategory() {
                 <div class="card-body">
                 <h5 class="card-title">{item.productName}</h5>
                 <p class="card-text">Rs.{item.productPrize}</p>
-                <button class="btn btn-success" onClick={()=>cartHandler(item.productId, item.productPrize)}>Add to Cart!</button>
+                <button class="btn btn-success" onClick={()=>cartHandler(item.productId, item.productPrize, item.productName)}>Add to Cart!</button>
                 </div>
                 </div>
                 </div>

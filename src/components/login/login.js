@@ -33,7 +33,7 @@ function Login(props)
         if(userdata.isLoaded)
         {
             {userdata.items.map(item => localStorage.setItem("userinfo", JSON.stringify({"userid": item.userId, "username": item.username})))}
-            console.log(localStorage.getItem("userid"));
+            console.log(localStorage.getItem("userinfo"));
             history.push("/");
         }
     }

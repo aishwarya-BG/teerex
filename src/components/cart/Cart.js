@@ -1,17 +1,31 @@
 import  Modal from './Modal.js';
 import React from 'react';
 import classes from './Cart.module.css';
+import {useSelector} from 'react-redux';
+import CartItem from './CartItem.js';
 
 function Cart(props) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+    
+    const cartItems = useSelector(state => state.cart.items);
 
     return (
         <Modal onClose={props.onClose}>
-            <ul className={classes['cart-items']}>
-                <li>qwertyu</li>
+            <ul>
+                {cartItems.map((item) =>(
+                    <CartItem 
+                        key = {item.id}
+                        item={{
+                        id: item.id,
+                        name:item.name,
+                        quantity:item.quantity,
+                        total:item.totalPrice,
+                        price:item.price
+                        }}
+                    />
+                ))} 
             </ul>
             <div className={classes.total}>
-                <span>Total Amount</span>
+                <span>&nbsp; &nbsp; Total Amount</span>
                 <span>1000</span>
             </div>
             <div className={classes.actions}>
