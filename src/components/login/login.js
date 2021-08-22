@@ -15,6 +15,8 @@ function Login(props)
     {
         event.preventDefault();
 
+        console.log("dbkgba");
+
         const requestbody = {
             method: 'POST',
             headers: {
@@ -30,10 +32,11 @@ function Login(props)
         .then(res=>res.json())
         .then(result => setUserdata({items: result, isLoaded: true}))
 
-        if(userdata.isLoaded)
+        console.log(userdata.isLoaded);
+
+        if(Object.keys(userdata.items).length!==0)
         {
             {userdata.items.map(item => localStorage.setItem("userinfo", JSON.stringify({"userid": item.userId, "username": item.username})))}
-            console.log(localStorage.getItem("userinfo"));
             history.push("/");
         }
     }

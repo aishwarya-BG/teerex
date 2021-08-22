@@ -77,7 +77,6 @@ function ProductByCategory() {
                 </div>
                 </div>
                 </div>
-
                  )
             }
             )}

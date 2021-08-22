@@ -8,6 +8,8 @@ function Cart(props) {
     
     const cartItems = useSelector(state => state.cart.items);
 
+    const cartPrice = useSelector(state=>state.cart)
+
     return (
         <Modal onClose={props.onClose}>
             <ul>
@@ -26,7 +28,7 @@ function Cart(props) {
             </ul>
             <div className={classes.total}>
                 <span>&nbsp; &nbsp; Total Amount</span>
-                <span>1000</span>
+                <span>{cartPrice.totalPrice}</span>
             </div>
             <div className={classes.actions}>
                 <button className={classes['button--alt']}onClick={props.onClose}>Close</button>
