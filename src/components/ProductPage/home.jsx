@@ -6,11 +6,13 @@ import classes from './home.module.css'
 
 import Header from './Header';
 import Cart from '../cart/Cart';
+import {useEffect} from 'react';
 
 
 function Home(props) {
 
     const [showcart, setShowcart] = useState(false);
+
 
     const showcartHandler = () =>
     {

@@ -7,6 +7,7 @@ import { Switch } from "react-router";
 import Newii from "./components/new/Newii";
 import Cart from "./components/cart/Cart";
 import { useSelector, useDispatch } from "react-redux";
+import { CartActions } from "./stores/CartSlice";
 
 
 
@@ -16,6 +17,43 @@ const App = (props) => {
   const cart =useSelector(state => state.cart)
 
   let name = JSON.parse(localStorage.getItem("userinfo"));
+
+  const dispatch = useDispatch();
+
+  const fetchData=async()=>
+  {
+    
+    
+    const response = await fetch(`http://localhost:8080/cartapi/id/${name.userid}`);
+    const data = await response.json();
+
+    console.log(data);
+    const cartlist = [{items:{}}, {totalQuantity:0}];
+
+    cartlist.items =  data.map((item) =>
+    {
+      return{
+        id : item.productId,
+        price : item.productPrice,
+        quantity : item.quantity,
+        totalPrice: 0,
+        name: item.productName
+        }
+    });
+
+    cartlist.totalQuantity = data.reduce((a,v) =>  a = a + v.quantity , 0);
+
+    dispatch(CartActions.replaceCart(cartlist))
+
+    console.log(cartlist);
+  }
+
+  useEffect(()=>{
+    if(name)
+    {
+    fetchData();
+    }
+  }, []);
 
   useEffect(() => {
     {cartitems.map((item) => (

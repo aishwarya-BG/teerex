@@ -15,8 +15,6 @@ function Login(props)
     {
         event.preventDefault();
 
-        console.log("dbkgba");
-
         const requestbody = {
             method: 'POST',
             headers: {

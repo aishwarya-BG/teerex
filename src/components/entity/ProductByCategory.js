@@ -12,6 +12,7 @@ function ProductByCategory() {
     const [categoryName, setCategoryName] = useState("Tees for men");
     const [products, setProducts] = useState([]);
     const [cartData, setCartdata] = useState([]);
+    const [cart, setCart] = useState([]);
 
     const dispatch = useDispatch();
 
@@ -27,11 +28,33 @@ function ProductByCategory() {
     }, [id]);
 
 
-    const cartHandler = (pId, price, name) =>
+    const cartHandler = async(pId, price, name) =>
     {
         if(user)
         {
-        const requestbody = {
+
+            const request = {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json',
+                    'Accept': 'application/json'
+                },
+                body:JSON.stringify({
+                    userId: user.userid,
+                    productId: pId
+                })
+            }
+
+            const response = await fetch('http://localhost:8080/cartapi/check', request)
+            const json = await response.json();
+
+            console.log(Object.keys(json).length);
+            console.log(user.userid);
+            console.log(pId);
+
+
+        if(Object.keys(json).length==0)
+        {const requestbody = {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',
@@ -41,7 +64,8 @@ function ProductByCategory() {
                 userId: user.userid,
                 productId: pId,
                 quantity: 1,
-                productPrice: price
+                productPrice: price,
+                productName: name
             })
         }
             fetch('http://localhost:8080/cartapi/save', requestbody)
@@ -50,6 +74,9 @@ function ProductByCategory() {
 
             dispatch(CartActions.addItem({id: pId, price: price, name:name}))
         }
+        }
+
+        
         else
         {
             history.push("/login");
