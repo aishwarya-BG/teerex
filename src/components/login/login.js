@@ -9,6 +9,8 @@ function Login(props)
 
     const [userdata, setUserdata] = useState({items: [], isLoaded: false});
 
+    let name = JSON.parse(localStorage.getItem("userinfo"));
+
     let history = useHistory();
 
     async function submitHandler(event)
@@ -34,7 +36,8 @@ function Login(props)
 
         if(Object.keys(userdata.items).length!==0)
         {
-            {userdata.items.map(item => localStorage.setItem("userinfo", JSON.stringify({"userid": item.userId, "username": item.username})))}
+            console.log("gsag");
+            {userdata.items.map(item => localStorage.setItem("userinfo", JSON.stringify({"userid": item.userId, "username": item.username, "role": item.role})))}
             history.push("/");
         }
     }

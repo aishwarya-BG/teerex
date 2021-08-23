@@ -13,7 +13,6 @@ function Home(props) {
 
     const [showcart, setShowcart] = useState(false);
 
-
     const showcartHandler = () =>
     {
       setShowcart(true);

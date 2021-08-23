@@ -4,8 +4,7 @@ import SwitchLogin from "./components/login/SwitchLogin";
 import Home from "./components/ProductPage/home";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Switch } from "react-router";
-import Newii from "./components/new/Newii";
-import Cart from "./components/cart/Cart";
+import Admin from "./components/admin/Admin";
 import { useSelector, useDispatch } from "react-redux";
 import { CartActions } from "./stores/CartSlice";
 
@@ -28,7 +27,7 @@ const App = (props) => {
     const data = await response.json();
 
     console.log(data);
-    const cartlist = [{items:{}}, {totalQuantity:0}];
+    const cartlist = [{items:{}}, {totalQuantity:0}, {totalPrice:0}];
 
     cartlist.items =  data.map((item) =>
     {
@@ -42,6 +41,15 @@ const App = (props) => {
     });
 
     cartlist.totalQuantity = data.reduce((a,v) =>  a = a + v.quantity , 0);
+
+    cartlist.totalPrice = data.reduce((a,v) =>  {
+      console.log({v})
+      a = a + v.quantity*v.productPrice
+      console.log({a})
+      return a;
+    } , 0);
+
+
 
     dispatch(CartActions.replaceCart(cartlist))
 
@@ -58,6 +66,7 @@ const App = (props) => {
   useEffect(() => {
     {cartitems.map((item) => (
 
+      
       fetch('http://localhost:8080/cartapi/update', {
       method: 'PUT',
       headers: {
@@ -69,6 +78,7 @@ const App = (props) => {
           quantity: item.quantity
       })
     })
+    
     ))
   }}, [cart])
 
@@ -80,14 +90,11 @@ const App = (props) => {
           <Route path="/login">
             <SwitchLogin/>
           </Route>
-          <Route excet path="/">
+          <Route exact path="/">
             <Home/>
           </Route>
-          <Route path="/newii">
-            <Newii />
-          </Route>
-          <Route path="/cart">
-            <Cart />
+          <Route path="/admin">
+            <Admin/>
           </Route>
         </Switch>
       </BrowserRouter>

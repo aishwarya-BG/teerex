@@ -19,6 +19,11 @@ function Header(props){
         window.location.reload(false);
     }
 
+    const adminHandler = () => 
+    {
+        history.push("/admin");
+    }
+
     return (
         
         <div>
@@ -32,6 +37,7 @@ function Header(props){
                 {localStorage.getItem("userinfo") ?
                 <Nav className="mr-sm-2 dropdown-menu-right">
                 <NavDropdown title={name.username} className={classes.NavDropdown}>
+                {name.role=="admin" && <NavDropdown.Item onClick={adminHandler}>Admin</NavDropdown.Item>}
                 <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                 </NavDropdown>
                 </Nav>:null}
