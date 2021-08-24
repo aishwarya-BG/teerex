@@ -24,16 +24,16 @@ const SwitchLogin = (props) => {
     console.log(details);
   }
 
+  
+
   return (
     <div className={classes.bodddy}>
     <div className={classes.form}>
-      <ul className={classes.tabgroup}>
-        <div className={classes.list}>
-        <li className={classes.tabactive}>
-          <a className = {classes.a} href="#signup" onClick={signuphandler}>Sign Up</a></li></div>
-        <div className={classes.list}>
-        <li className={classes.tab}>
-          <a className = {classes.a} href="#login" onClick={signinhandler}>Sign In</a></li></div>
+      <ul className={classes['tab-group']}>
+        <li className={`${classes.tab} ${!isLogin ? classes.active : ''}`}>
+          <a className={classes.a}href="#signup" onClick={signuphandler}>Sign Up</a></li>
+        <li className={`${classes.tab} ${isLogin ? classes.active : ''}`}>
+          <a className={classes.a} href="#login" onClick={signinhandler}>Sign In</a></li>
       </ul>
       {isLogin && <Login onSubmit={()=>console.log(userid)} setUserid={setUserid}/>}
       {!isLogin && <Register Registerform = {Registerform}/>}

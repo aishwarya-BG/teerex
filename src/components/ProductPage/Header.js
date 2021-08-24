@@ -38,12 +38,13 @@ function Header(props){
                 <Nav className="mr-sm-2 dropdown-menu-right">
                 <NavDropdown title={name.username} className={classes.NavDropdown}>
                 {name.role=="admin" && <NavDropdown.Item onClick={adminHandler}>Admin</NavDropdown.Item>}
+                <NavDropdown.Item onClick={props.onShowOrders}>My Orders</NavDropdown.Item>
                 <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                 </NavDropdown>
                 </Nav>:null}
                 {!localStorage.getItem("userinfo") &&
                 <Link to ="/login" className={classes.button2}>
-                <button type="button" class="btn btn-success btn-lg">Login</button>
+                <button type="button" className="btn btn-success btn-lg">Login</button>
                 </Link>}
             </header>
    

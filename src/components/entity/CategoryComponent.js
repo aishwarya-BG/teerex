@@ -29,7 +29,7 @@ function CategoryComponent(props)
     return (
         <div className={classes.catback}>
             {/*<h2 className={classes.h2} >Categories</h2>*/}
-            <ul class="list-group">
+            <ul className="list-group">
                 {categorys.map(c=>(
                     <li className = {classes.li} key={c.categoryId} id={c.categoryName} onClick={()=>{props.setId(c.categoryId); props.setCategoryName(c.categoryName)}}>
                         {c.categoryName}

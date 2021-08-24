@@ -1,0 +1,53 @@
+
+
+    .catback {
+        text-decoration: none;
+      }
+    
+    
+      h2 {
+        display: block;
+        padding: 0px 0 0px 0;
+        margin:0 0 0px 0;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+        color: rgb(36, 39, 38);
+    
+      }
+      
+  
+      .li
+      {
+        padding: 20px 20 20px 20;
+        margin:0 20px 20px 0;
+        display:block;
+          
+          text-decoration:none;
+          padding:15px;
+          background: #dae0de;
+          color: #173b2c;
+          font-size:20px;
+          float:left;
+          width:50%;
+          text-align:center;
+          cursor:pointer;
+          transition:.5s ease;
+    
+      }
+      
+      li:hover
+      {
+        background:lighten(#20d190, 5%);
+        color: #08fda7
+      }
+      
+      li:active a
+      {
+          background-color: #0dfc98;
+          color:white;
+       }
+  
+           
+  
+     
+  

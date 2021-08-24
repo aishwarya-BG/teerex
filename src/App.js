@@ -17,51 +17,7 @@ const App = (props) => {
 
   let name = JSON.parse(localStorage.getItem("userinfo"));
 
-  const dispatch = useDispatch();
-
-  const fetchData=async()=>
-  {
-    
-    
-    const response = await fetch(`http://localhost:8080/cartapi/id/${name.userid}`);
-    const data = await response.json();
-
-    console.log(data);
-    const cartlist = [{items:{}}, {totalQuantity:0}, {totalPrice:0}];
-
-    cartlist.items =  data.map((item) =>
-    {
-      return{
-        id : item.productId,
-        price : item.productPrice,
-        quantity : item.quantity,
-        totalPrice: 0,
-        name: item.productName
-        }
-    });
-
-    cartlist.totalQuantity = data.reduce((a,v) =>  a = a + v.quantity , 0);
-
-    cartlist.totalPrice = data.reduce((a,v) =>  {
-      console.log({v})
-      a = a + v.quantity*v.productPrice
-      console.log({a})
-      return a;
-    } , 0);
-
-
-
-    dispatch(CartActions.replaceCart(cartlist))
-
-    console.log(cartlist);
-  }
-
-  useEffect(()=>{
-    if(name)
-    {
-    fetchData();
-    }
-  }, []);
+  
 
   useEffect(() => {
     {cartitems.map((item) => (

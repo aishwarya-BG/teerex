@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from './Style.module.css';
 import loginImg from '../../assets/banner21.png';
 import { Link, useHistory } from "react-router-dom";
@@ -12,6 +12,15 @@ function Login(props)
     let name = JSON.parse(localStorage.getItem("userinfo"));
 
     let history = useHistory();
+
+    useEffect(() => {
+        if(Object.keys(userdata.items).length!==0)
+        {
+            console.log("gsag");
+            {userdata.items.map(item => localStorage.setItem("userinfo", JSON.stringify({"userid": item.userId, "username": item.username, "role": item.role})))}
+            history.push("/");
+        }
+    }, [userdata])
 
     async function submitHandler(event)
     {
@@ -34,12 +43,7 @@ function Login(props)
 
         console.log(userdata.isLoaded);
 
-        if(Object.keys(userdata.items).length!==0)
-        {
-            console.log("gsag");
-            {userdata.items.map(item => localStorage.setItem("userinfo", JSON.stringify({"userid": item.userId, "username": item.username, "role": item.role})))}
-            history.push("/");
-        }
+        
     }
 
     const usernameChangeHandler = (event) =>

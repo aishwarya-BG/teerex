@@ -20,8 +20,9 @@
   }
   
   .a {
-    color: rgb(39, 168, 119);
-  
+    color: rgb(5, 36, 25);
+    text-decoration:none;
+    transition:.5s ease;
   }
     
   .form {
@@ -36,27 +37,24 @@
     box-shadow:0 4px 10px 4px rgba(#494e53,.3);
   }
   
-  .a:hover{
-    color:darken(#0e3a30, 5%);
-  }
-  .tabgroup {
+  .tab-group {
     list-style:none;
     padding:0;
     margin:0 0 40px 0;
   }
   
-  .tabgroup:after{
+  .tab-group:after{
     content: "";
     display: table;
     clear: both;
   }
   
-  .list {
+  .tab {
     display:block;
       text-decoration:none;
       padding:15px;
-      background: #dae0de;
-      color: #10a549;
+      background: #e0dada;
+      color: #5f9674;
       font-size:20px;
       float:left;
       width:50%;
@@ -65,15 +63,16 @@
       transition:.5s ease;
 
   }
+
   
-  .list:hover
+  li a:hover
   {
-    background:lighten(#20d190, 5%);
-    color: #ffffff
+    color: #ffffff;
+    background-color: #187047;
   }
   
-  .list:active a
+  .active
   {
-      background: #15a886;
-      color:white;
+      background: #4ab488;
+      color: #ffffff
    }
