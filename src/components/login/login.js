@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from './Style.module.css';
 import loginImg from '../../assets/banner21.png';
 import { Link, useHistory } from "react-router-dom";
+import { baseURL } from "../../constants/constant";
 
 function Login(props) 
 {
@@ -37,7 +38,7 @@ function Login(props)
             })
         }
 
-        fetch('http://localhost:8080/userapi/login', requestbody)
+        fetch(`${baseURL}/userapi/login`, requestbody)
         .then(res=>res.json())
         .then(result => setUserdata({items: result, isLoaded: true}))
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import NewProduct from "./NewProduct";
 
 function Product(props) {
   const [newProduct, setNewProduct] = useState(false);
@@ -38,7 +39,7 @@ function Product(props) {
       >
         Add Category
       </button>
-      {newProduct && <h1>Hi</h1>}
+      {newProduct && <NewProduct/>}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classes from './Style.module.css';
 import loginImg from '../../assets/signuplogo.png';
+import { baseURL } from "../../constants/constant";
 
 function Register({Registerform}) 
 {
@@ -20,7 +21,7 @@ function Register({Registerform})
                 email: details.email
             })
         }
-        const response = await fetch('http://localhost:8080/userapi/save', requestbody);
+        const response = await fetch(`${baseURL}/userapi/save`, requestbody);
         Registerform(details);
     }
     

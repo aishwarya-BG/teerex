@@ -1,20 +1,21 @@
 import React from "react";
 import Modal from "../cart/Modal";
 import { useEffect, useState } from "react";
+import { baseURL } from "../../constants/constant";
 
 function Order(props) {
   let name = JSON.parse(localStorage.getItem("userinfo"));
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/orderapi/byuser/${name.userid}`)
+    fetch(`${baseURL}/orderapi/byuser/${name.userid}`)
       .then((res) => res.json())
       .then((result) => setOrder(result));
   }, []);
 
   const cancelHandler = (id) => {
     console.log(id);
-    fetch(`http://localhost:8080/orderapi/order/${id}`, {
+    fetch(`${baseURL}/orderapi/order/${id}`, {
       method: "DELETE",
     });
     window.location.reload(false);

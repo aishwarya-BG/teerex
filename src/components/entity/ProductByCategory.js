@@ -4,6 +4,7 @@ import loginImg from "../../assets/banner21.png";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CartActions } from "../../stores/CartSlice";
+import { baseURL } from "../../constants/constant";
 
 function ProductByCategory() {
   const [id, setId] = useState(1);
@@ -19,7 +20,7 @@ function ProductByCategory() {
   let user = JSON.parse(localStorage.getItem("userinfo"));
 
   useEffect(() => {
-    fetch(`http://localhost:8080/productapi/id/${id}`)
+    fetch(`${baseURL}/productapi/id/${id}`)
       .then((response) => response.json())
       .then((json) => setProducts(json));
   }, [id]);
@@ -39,7 +40,7 @@ function ProductByCategory() {
       };
 
       const response = await fetch(
-        "http://localhost:8080/cartapi/check",
+        `${baseURL}/cartapi/check`,
         request
       );
       const json = await response.json();
@@ -63,7 +64,7 @@ function ProductByCategory() {
             productName: name,
           }),
         };
-        fetch("http://localhost:8080/cartapi/save", requestbody)
+        fetch(`${baseURL}/cartapi/save`, requestbody)
           .then((res) => res.json())
           .then((result) => setCartdata(result));
 

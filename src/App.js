@@ -7,6 +7,7 @@ import { Switch } from "react-router";
 import Admin from "./components/admin/Admin";
 import { useSelector, useDispatch } from "react-redux";
 import { CartActions } from "./stores/CartSlice";
+import { baseURL } from "./constants/constant";
 
 
 
@@ -23,7 +24,7 @@ const App = (props) => {
     {cartitems.map((item) => (
 
       
-      fetch('http://localhost:8080/cartapi/update', {
+      fetch(`${baseURL}/cartapi/update`, {
       method: 'PUT',
       headers: {
           'Content-Type':'application/json'

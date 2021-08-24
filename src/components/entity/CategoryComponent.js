@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import classes from './Category.module.css';
+import { baseURL } from '../../constants/constant';
 
 
 function CategoryComponent(props)
@@ -14,7 +15,7 @@ function CategoryComponent(props)
     let history = useHistory();
     useEffect(()=>
     {
-        fetch('http://localhost:8080/categoryapi/list')
+        fetch(`${baseURL}/categoryapi/list`)
         .then(res=>res.json())
         .then(
             (result) =>

@@ -3,6 +3,7 @@ import classes from "./Checkout.module.css";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { baseURL } from "../../constants/constant";
 
 function Checkout(props) {
   const [formInputValidity, setFormInputValidity] = useState({
@@ -28,30 +29,6 @@ function Checkout(props) {
 
   let user = JSON.parse(localStorage.getItem("userinfo"));
 
-  const [orderid, setOrderId] = useState(0);
-
-  const [enteredData, setEnteredData] = useState({});
-
-  const cartlist = [{ items: {} }, { totalQuantity: 0 }, { totalPrice: 0 }];
-
-
-  {/*useEffect(() => {
-    fetch("http://localhost:8080/shippingapi/save", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userid: user.userid,
-        address: enteredData.address,
-        city: enteredData.city,
-        state: enteredData.state,
-        pincode: enteredData.pincode,
-        orderid: orderid,
-        totalamt: cartPrice.totalPrice,
-      }),
-    });
-  }, [orderid, enteredData]);*/}
 
   const ConfirmHandler = async (event) => {
     event.preventDefault();
@@ -90,7 +67,7 @@ function Checkout(props) {
 
     console.log(cartPrice.totalPrice);
 
-    const response = await fetch("http://localhost:8080/orderapi/save", {
+    const response = await fetch(`${baseURL}/orderapi/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -106,7 +83,7 @@ function Checkout(props) {
     console.log(json.orderId);
 
     cartitems.map((item) =>
-    fetch("http://localhost:8080/orderlineapi/save", {
+    fetch(`${baseURL}/orderlineapi/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -120,7 +97,7 @@ function Checkout(props) {
       }),
     }))
 
-    fetch("http://localhost:8080/shippingapi/save", {
+    fetch(`${baseURL}/shippingapi/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -138,7 +115,7 @@ function Checkout(props) {
     console.log("gvdfsja");
 
     cartitems.map((item) =>
-    fetch("http://localhost:8080/cartapi/remove", {
+    fetch(`${baseURL}/cartapi/remove`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

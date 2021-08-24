@@ -3,6 +3,7 @@ import classes from './Tables.module.css';
 import {useState, useEffect} from 'react';
 import Category from './Category';
 import Product from './Product';
+import { baseURL } from '../../constants/constant';
 
 
 function Tables(props) {
@@ -18,7 +19,7 @@ function Tables(props) {
 
     const categoryHandler = () =>
     {
-        fetch('http://localhost:8080/categoryapi/list')
+        fetch(`${baseURL}/categoryapi/list`)
         .then(res=>res.json())
         .then(result => setCategory(result));
         console.log(category);
@@ -26,7 +27,7 @@ function Tables(props) {
 
     const productHandler = () =>
     {
-        fetch('http://localhost:8080/productapi/list')
+        fetch(`${baseURL}/productapi/list`)
         .then(res=>res.json())
         .then(result => setProducts(result));
         console.log(product);
@@ -34,7 +35,7 @@ function Tables(props) {
 
     const ordersHandler = () =>
     {
-        fetch('http://localhost:8080/orderapi/list')
+        fetch(`${baseURL}/orderapi/list`)
         .then(res=>res.json())
         .then(result => setOrder(result));
         console.log(order);

@@ -1,7 +1,8 @@
 import React from 'react';
 import  Modal from '../cart/Modal.js';
 import {useRef} from 'react';
-import classes from './NewCategory.module.css'
+import classes from './NewCategory.module.css';
+import { baseURL } from '../../constants/constant.js';
 
 function NewCategory() {
 
@@ -11,7 +12,7 @@ function NewCategory() {
     {
         const enteredName = nameInputRef.current.value;
         
-        fetch('http://localhost:8080/categoryapi/save', {
+        fetch(`${baseURL}/categoryapi/save`, {
                 method: 'POST',
                 headers: {
                     'Content-Type':'application/json'

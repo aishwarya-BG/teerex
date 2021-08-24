@@ -2,8 +2,9 @@ import React from "react";
 import Modal from "../cart/Modal.js";
 import { useRef } from "react";
 import classes from "./NewCategory.module.css";
+import { baseURL } from "../../constants/constant.js";
 
-function NewCategory() {
+function NewProduct() {
   const nameInputRef = useRef();
   const imageInputRef = useRef();
   const sizeInputRef = useRef();
@@ -21,14 +22,14 @@ function NewCategory() {
     const enteredPrice = priceInputRef.current.value;
     const enteredCatid = catidInputRef.current.value;
 
-    fetch("http://localhost:8080/productapi/save", {
+    fetch(`${baseURL}/productapi/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         productName: enteredName,
-        productImage: enteredImage,
+        productImg: enteredImage,
         productSize: enteredSize,
         productStock: enteredStock,
         productColour: enteredColour,
@@ -69,10 +70,6 @@ function NewCategory() {
           <label htmlFor="Categoryid">Category ID</label>
           <input type="text" id="Categoryid" ref={catidInputRef} />
         </div>
-        <div className={classes.control}>
-          <label htmlFor="Category">Category name</label>
-          <input type="text" id="Category" ref={nameInputRef} />
-        </div>
         <div className={classes.actions}>
           <button type="submit" className={classes.submit}>
             Add!
@@ -83,4 +80,4 @@ function NewCategory() {
   );
 }
 
-export default NewCategory;
+export default NewProduct;

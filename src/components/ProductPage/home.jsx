@@ -9,6 +9,7 @@ import Header from './Header';
 import Cart from '../cart/Cart';
 import {useEffect} from 'react';
 import Order from '../orders/Order';
+import { baseURL } from '../../constants/constant';
 
 
 function Home(props) {
@@ -23,7 +24,7 @@ function Home(props) {
 
   const fetchData=async()=>
   {
-    const response = await fetch(`http://localhost:8080/cartapi/id/${name.userid}`);
+    const response = await fetch(`${baseURL}/cartapi/id/${name.userid}`);
     const data = await response.json();
 
     console.log(data);

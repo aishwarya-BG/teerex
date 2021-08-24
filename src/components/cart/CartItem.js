@@ -1,6 +1,7 @@
 import classes from './CartItem.module.css';
 import { useDispatch } from 'react-redux';
 import { CartActions } from '../../stores/CartSlice';
+import { baseURL } from '../../constants/constant';
 
 
 const CartItem = (props) => {
@@ -22,7 +23,7 @@ const CartItem = (props) => {
     console.log(quantity);
     if(quantity===1)
     {
-      fetch('http://localhost:8080/cartapi/remove', {
+      fetch(`${baseURL}/cartapi/remove`, {
         method: 'DELETE',
         headers: {
             'Content-Type':'application/json'
