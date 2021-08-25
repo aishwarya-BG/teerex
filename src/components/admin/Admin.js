@@ -1,12 +1,12 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import Header from '../ProductPage/Header'
+import HeaderAdmin from './HeaderAdmin'
 import Tables from './Tables'
 
 function Admin() {
     return (
         <div>
-        <Header/>
+        <HeaderAdmin/>
         <Tables/>
         </div>
     )

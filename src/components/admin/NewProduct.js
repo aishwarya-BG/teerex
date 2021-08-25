@@ -4,7 +4,7 @@ import { useRef } from "react";
 import classes from "./NewCategory.module.css";
 import { baseURL } from "../../constants/constant.js";
 
-function NewProduct() {
+function NewProduct(props) {
   const nameInputRef = useRef();
   const imageInputRef = useRef();
   const sizeInputRef = useRef();
@@ -71,6 +71,7 @@ function NewProduct() {
           <input type="text" id="Categoryid" ref={catidInputRef} />
         </div>
         <div className={classes.actions}>
+        <button className={classes.button} onClick={()=>{props.setNewProduct(false)}}>Cancel</button>
           <button type="submit" className={classes.submit}>
             Add!
           </button>

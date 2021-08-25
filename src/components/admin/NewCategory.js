@@ -4,7 +4,7 @@ import {useRef} from 'react';
 import classes from './NewCategory.module.css';
 import { baseURL } from '../../constants/constant.js';
 
-function NewCategory() {
+function NewCategory(props) {
 
     const nameInputRef = useRef();
 
@@ -31,6 +31,7 @@ function NewCategory() {
                 <input type='text' id='Category' ref={nameInputRef}/>
             </div>
             <div className={classes.actions}>
+            <button className={classes.button} onClick={()=>{props.setNewCategory(false)}}>Cancel</button>
             <button type="submit" className={classes.submit}>Add!</button>
             </div>
             </form>

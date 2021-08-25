@@ -43,7 +43,7 @@ function Cart(props) {
                 ))} 
             </ul>
             <div className={classes.total}>
-                <span>&nbsp; &nbsp; Total Amount</span>
+                <span>Total Amount</span>
                 <span>{cartPrice.totalPrice}</span>
             </div>
             {isCheckout && <Checkout onClose={props.onClose}/>}

@@ -11,29 +11,30 @@ function Category(props) {
 
   return (
     <div>
-      <h1>Category</h1>
-      <table>
+      <table className="table table-striped">
         <thead>
           <tr>
-            <td>List</td>
+            <th scope="col">Category ID</th>
+            <th scope="col">List</th>
           </tr>
         </thead>
         <tbody>
           {props.category.map((item) => (
             <tr key={item.categoryId}>
+              <th scope="row">{item.categoryId}</th>
               <td>{item.categoryName}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button
+      <button type="button" className="btn btn-success btn-lg"
         onClick={() => {
           setNewCategory(true);
         }}
       >
         Add Category
       </button>
-      {newCategory && <NewCategory />}
+      {newCategory && <NewCategory setNewCategory={setNewCategory}/>}
     </div>
   );
 }

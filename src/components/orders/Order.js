@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "../cart/Modal";
 import { useEffect, useState } from "react";
 import { baseURL } from "../../constants/constant";
+import classes from './Order.module.css'
 
 function Order(props) {
   let name = JSON.parse(localStorage.getItem("userinfo"));
@@ -24,8 +25,8 @@ function Order(props) {
   return (
     <Modal>
       <div>
-        <h4>My Orders</h4>
-        <table className="table">
+        <h4 className={classes.h4}>TeeRex Orders for you!</h4>
+        <table className="table table-striped">
           <thead>
             <tr>
               <th scope="col">Order No</th>
@@ -42,7 +43,7 @@ function Order(props) {
                 <td>{item.totalPrice}</td>
                 <td>
                   {item.orderStatus === "Placed" && (
-                    <button
+                    <button className = {classes.button}
                       onClick={() => {
                         cancelHandler(item.orderId);
                       }}
@@ -56,7 +57,9 @@ function Order(props) {
           </tbody>
         </table>
       </div>
-      <button onClick={props.onClose}>Close</button>
+      <div className={classes.actions}>
+      <button className = {classes.button} onClick={props.onClose}>Close</button>
+      </div>
     </Modal>
   );
 }
