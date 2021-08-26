@@ -1,0 +1,35 @@
+.actions {
+    text-align: right;
+  }
+  
+.h4
+{
+    color: #06974f;
+    align-self: center;
+}
+
+  .actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #0c4128;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+  }
+  
+  .actions button:hover,
+  .actions button:active {
+    background-color: #015a2e;
+    border-color: #1a5f31;
+    color: white;
+  }
+  
+  .actions .button--alt {
+    color: #068a48;
+  }
+  
+  .actions .button {
+    background-color: #068a41;
+    color: white;
+  }

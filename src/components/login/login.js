@@ -7,19 +7,20 @@ import { baseURL } from "../../constants/constant";
 function Login(props) {
   const [details, setDetails] = useState({ username: "", password: "" });
 
-  const [userdata, setUserdata] = useState({ items: [], isLoaded: false });
+  const [userdata, setUserdata] = useState([]);
 
   let name = JSON.parse(localStorage.getItem("userinfo"));
 
   let history = useHistory();
 
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    if (Object.keys(userdata.items).length !== 0) {
+    if (Object.keys(userdata).length !== 0) {
       console.log("gsag");
       {
-        userdata.items.map((item) =>
+        userdata.map((item) =>
           localStorage.setItem(
             "userinfo",
             JSON.stringify({
@@ -37,21 +38,34 @@ function Login(props) {
   async function submitHandler(event) {
     event.preventDefault();
 
-    const requestbody = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: details.username,
-        password: details.password,
-      }),
-    };
-
-    fetch(`${baseURL}/userapi/login`, requestbody)
-      .then((res) => res.json())
-      .then((result) => setUserdata({ items: result, isLoaded: true }))
-      
+    try {
+      const URL = `${baseURL}/userapi/login`,
+        requestbody = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: details.username,
+            password: details.password,
+          }),
+        };
+      const res = await fetch(URL, requestbody);
+      const result = await res.json();
+      console.log({ result });
+      if (result && result.length > 0) {
+        setError(false);
+        setErrorMessage("");
+        setUserdata(result);
+      } else {
+        setError(true);
+        setErrorMessage("Username or Password not matched");
+      }
+    } catch (error) {
+      console.error(error);
+      setError(true);
+      setErrorMessage("Something Went Wrong, Please try again.");
+    }
   }
 
   const usernameChangeHandler = (event) => {
@@ -94,6 +108,7 @@ function Login(props) {
               />
             </div>
           </div>
+          {!!error && <div className={classes.invalid}>{errorMessage}</div>}
           <div className={classes.footer}>
             <button type="submit" className={classes.btn}>
               Login

@@ -8,6 +8,7 @@ import Admin from "./components/admin/Admin";
 import { useSelector, useDispatch } from "react-redux";
 import { CartActions } from "./stores/CartSlice";
 import { baseURL } from "./constants/constant";
+import NotFound from "./components/adminAuthentication/NotFound";
 
 
 
@@ -52,6 +53,9 @@ const App = (props) => {
           </Route>
           <Route path="/admin">
             <Admin/>
+          </Route>
+          <Route>
+            <NotFound/>
           </Route>
         </Switch>
       </BrowserRouter>

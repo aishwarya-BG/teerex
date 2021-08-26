@@ -79,9 +79,9 @@ function Home(props) {
       <Header onShowcart={showcartHandler} onShowOrders={showorderHandler} />
       <h1>Welcome</h1>
       <br />
-      {/*<div className={classes["main-image"]}>
+      <div className={classes["main-image"]}>
         <img src={bannerimg} />
-        </div>*/}
+      </div>
       <ProductByCategory />
     </div>
   );

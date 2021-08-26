@@ -1,0 +1,62 @@
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: #51c790;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 0%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+  }
+
+  .img {
+    width: 5%;
+    height: 6rem;
+    object-fit:contain;
+    object-position:1em;
+  }
+
+  .header h1 {
+      position: absolute;
+      left: 150px;
+  }
+  
+  .button1 {
+      position: absolute;
+      right: 200px;
+      margin-top: 0px;
+      justify-content: space-between;
+  }
+
+  .button2 {
+    position: absolute;
+    right: 50px;
+    margin-top: 0px;
+    justify-content: space-between;
+}
+
+
+
+  .NavDropdown {
+    color: #dd6119;
+    background-color:rgb(241, 239, 230);
+    font-weight: bold;
+    position: relative;
+    right: -1650px;
+    margin-top: 0px;
+    justify-content: space-between;
+  }
+
+
+
+
+  .nav
+  {
+    color: white;
+
+  }

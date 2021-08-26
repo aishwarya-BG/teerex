@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import NewProduct from "./NewProduct";
+import { baseURL } from "../../constants/constant";
+import UpdateProduct from "./UpdateProduct";
 
 function Product(props) {
   const [newProduct, setNewProduct] = useState(false);
   const [product, setProduct] = useState(props.product);
   const [order, setOrder] = useState("ASC");
+  const [update, setUpdate] = useState(false);
+  const [productId, setProductId] = useState(0);
   
 
   const sorting = (col) =>
@@ -44,6 +48,14 @@ function Product(props) {
     }
   }
 
+  const deleteHandler = (id) =>
+  {
+    fetch(`${baseURL}/productapi/products/${id}`, {
+      method: "DELETE",
+    });
+    window.location.reload(false);
+  }
+
   return (
     <div>
       <table className="table table-striped">
@@ -56,6 +68,7 @@ function Product(props) {
             <th onClick = {()=>{sorting("productColour")}} scope="col">Colour</th>
             <th onClick = {()=>{sortingnum("productPrize")}} scope="col">Price</th>
             <th onClick = {()=>{sortingnum("categoryId")}} scope="col">Category id</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -68,6 +81,8 @@ function Product(props) {
               <td>{item.productColour}</td>
               <td>{item.productPrize}</td>
               <td>{item.categoryId}</td>
+              <td><button className="btn btn-success" onClick={()=>{setUpdate(true); setProductId(item.productId)}}>Update</button>{" "}
+                |{" "}<button className="btn btn-danger" onClick={()=>{deleteHandler(item.productId)}}>Delete</button></td>
             </tr>
           ))}
         </tbody>
@@ -82,6 +97,7 @@ function Product(props) {
       <br/>
       <br/>
       {newProduct && <NewProduct setNewProduct={setNewProduct}/>}
+      {update && <UpdateProduct productId={productId} setUpdate={setUpdate}/>}
     </div>
   );
 }

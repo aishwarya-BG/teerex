@@ -77,3 +77,15 @@ btn:focus{
     
 }
 
+.invalid
+{
+    color: red;
+    padding-top: 20px;
+}
+
+.success
+{
+    color:rgb(32, 206, 107);
+    padding-top: 20px;
+}
+
