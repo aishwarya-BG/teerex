@@ -1,39 +1,41 @@
 import React from 'react'
 import Modal from '../cart/Modal'
 import classes from './NewCategory.module.css';
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 import { baseURL } from '../../constants/constant';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 function OrderStatus(props) {
 
-    const nameInputRef = useRef();
+    const [statuses, setStatuses] = useState("");
 
     const updateHandler = () =>
     {
     
-        const enteredName = nameInputRef.current.value;
-        console.log(enteredName);
         fetch(`${baseURL}/orderapi/update`, {
             method: 'PUT',
             headers: {
                 'Content-Type':'application/json'
             },
             body:JSON.stringify({
-                orderStatus: enteredName,
+                orderStatus: statuses,
                 orderId: props.orderid
             })
           })
+
 
     }
 
     return (
         <Modal>
             <form onSubmit={updateHandler}>
-        <div className={classes.control}>
-          <label htmlFor="Product">Order Status</label>
-          <input type="text" id="Product" ref={nameInputRef} />
-        </div>
-        
+            <DropdownButton variant="success" id="dropdown-basic-button" title="Order Status">
+  <Dropdown.Item onClick={()=>{setStatuses("In-transit")}}>In-transit</Dropdown.Item>
+  <Dropdown.Item onClick={()=>{setStatuses("Delivered")}}>Delivered</Dropdown.Item>
+</DropdownButton>
+<br/>
+<br/>
+<br/>
             
             <div className={classes.actions}>
           <button type="submit" className={classes.submit}>
