@@ -7,6 +7,7 @@ function Category(props) {
     console.log(props.category);
     console.log("fasf");
     console.log(category);
+    props.setIsCategory(true);
   }, []);
 
   const [newCategory, setNewCategory] = useState(false);

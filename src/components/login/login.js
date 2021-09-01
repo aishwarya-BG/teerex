@@ -82,7 +82,7 @@ function Login(props) {
 
   return (
     <div className={classes.base}>
-      <div className={classes.header}>Tee-Rex says Hi!</div>
+      <h2>Tee-Rex says Hi!</h2>
       <br></br>
       <div className={classes.content}>
         <div className={classes.img}>

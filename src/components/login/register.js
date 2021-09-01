@@ -71,7 +71,7 @@ function Register({ Registerform }) {
 
   return (
     <div className={classes.base}>
-      <div className={classes.header}>Tee-Rex wants you to see his Tees!</div>
+      <h2>Tee-Rex wants you to see his Tees!</h2>
       <br></br>
       <div className={classes.content}>
         <div className={classes.img}>

@@ -96,7 +96,7 @@ function ProductByCategory() {
                     height="50px"
                   />
                   <div className="card-body">
-                    <h5 className="card-title">{item.productName}</h5>
+                    <h3 className="card-title">{item.productName}</h3>
                     <p className="card-text">Rs.{item.productPrize}</p>
                     <button
                       className="btn btn-success"

@@ -10,6 +10,7 @@
 
 .cart-item h2 {
   margin: 0 0 0.5rem 0;
+  font-size: 1.4em;
   color: #363636;
 }
 
@@ -22,6 +23,7 @@
 
 .price {
   font-weight: bold;
+  font-size: 1.2em;
   color: #068a53;
 }
 

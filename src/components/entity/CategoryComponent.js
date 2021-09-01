@@ -29,6 +29,10 @@ function CategoryComponent(props)
 
 
     return (
+        <div>
+        <div>
+            <h3 className={classes.h5}>Tee-Rex Category</h3>
+        </div>
         <div className={classes.catback}>
             <ul className="list-group">
                 {categorys.map(c=>(
@@ -38,6 +42,7 @@ function CategoryComponent(props)
                 ))}
             </ul>
            </div> 
+           </div>
     )
 }
 

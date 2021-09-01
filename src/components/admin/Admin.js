@@ -12,7 +12,6 @@ function Admin() {
         <HeaderAdmin/>
         <Tables/>
         <div className={classes["main-image"]}>
-        <img src={footer}/>
         </div>
         </div>
     )

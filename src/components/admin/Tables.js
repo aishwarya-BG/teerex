@@ -69,7 +69,7 @@ function Tables(props) {
             <br/>
             <br/>
             <br/>
-            {isCategory && <Category category={category}/>}
+            {isCategory && <Category category={category} setIsCategory={setIsCategory}/>}
             {isProduct && <Product product={product}/>}
             {isOrder && <Orders orders={order}/>}
         </div>

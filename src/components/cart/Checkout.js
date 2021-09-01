@@ -7,14 +7,12 @@ import { baseURL } from "../../constants/constant";
 
 function Checkout(props) {
   const [formInputValidity, setFormInputValidity] = useState({
-    name: true,
     address: true,
     city: true,
     state: true,
     pincode: true,
   });
 
-  const nameInputRef = useRef();
   const addressInputRef = useRef();
   const stateInputRef = useRef();
   const cityInputRef = useRef();
@@ -33,20 +31,17 @@ function Checkout(props) {
   const ConfirmHandler = async (event) => {
     event.preventDefault();
 
-    const enteredName = nameInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
     const enteredCity = cityInputRef.current.value;
     const enteredState = stateInputRef.current.value;
     const enteredPincode = pincodeInputRef.current.value;
 
-    const enteredNameIsValid = !isEmpty(enteredName);
     const enteredAddressIsValid = !isEmpty(enteredAddress);
     const enteredCityIsValid = !isEmpty(enteredCity);
     const enteredStateIsValid = !isEmpty(enteredState);
     const enteredPincodeIsValid = !isNotSixChars(enteredPincode);
 
     setFormInputValidity({
-      name: enteredNameIsValid,
       address: enteredAddressIsValid,
       city: enteredCityIsValid,
       state: enteredStateIsValid,
@@ -57,8 +52,7 @@ function Checkout(props) {
       enteredPincodeIsValid &&
       enteredStateIsValid &&
       enteredCityIsValid &&
-      enteredAddressIsValid &&
-      enteredNameIsValid;
+      enteredAddressIsValid;
 
     console.log("Gsdag");
     if (!formIsValid) {
@@ -133,15 +127,7 @@ function Checkout(props) {
 
   return (
     <form onSubmit={ConfirmHandler}>
-      <div
-        className={`${classes.control} ${
-          formInputValidity.name ? "" : classes.invalid
-        }`}
-      >
-        <label htmlFor="name">Your name</label>
-        <input type="text" id="name" ref={nameInputRef} />
-        {!formInputValidity.name && <p>Please enter valid name!</p>}
-      </div>
+
       <div
         className={`${classes.control} ${
           formInputValidity.address ? "" : classes.invalid

@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux';
 import CartItem from './CartItem.js';
 import Checkout from './Checkout.js';
 import {useState} from 'react';
+import RadioAddress from './RadioAddress.js';
 
 function Cart(props) {
 
@@ -12,17 +13,24 @@ function Cart(props) {
     
     const cartItems = useSelector(state => state.cart.items);
 
-    const cartPrice = useSelector(state=>state.cart)
+    const cartPrice = useSelector(state=>state.cart);
+
+    const [address, setAddress] = useState(false);
 
     const orderHandler=()=>
     {
         setIsCheckout(true);
     }
 
+    const checkoutHandler=()=>
+    {
+        setAddress(true);
+    }
+
     const modalActions = (
         <div className={classes.actions}>
                 <button className={classes['button--alt']}onClick={props.onClose}>Close</button>
-                <button className={classes.button} onClick={orderHandler}>Order</button>
+                <button className={classes.button} onClick={checkoutHandler}>Order</button>
         </div>
     )
 
@@ -46,8 +54,10 @@ function Cart(props) {
                 <span>Total Amount</span>
                 <span>{cartPrice.totalPrice}</span>
             </div>
+            {address && <RadioAddress setIsCheckout={setIsCheckout} onClose={props.onClose} isCheckout={isCheckout}/>}
+
             {isCheckout && <Checkout onClose={props.onClose}/>}
-            {!isCheckout && modalActions}
+            {!isCheckout && !address && modalActions}
         </Modal>
     )
 }

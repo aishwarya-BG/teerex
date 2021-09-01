@@ -10,6 +10,7 @@ import Cart from "../cart/Cart";
 import { useEffect } from "react";
 import Order from "../orders/Order";
 import { baseURL } from "../../constants/constant";
+import { ProductActions } from "../../stores/ProductSlice";
 
 function Home(props) {
   const [showcart, setShowcart] = useState(false);
@@ -50,10 +51,29 @@ function Home(props) {
     console.log(cartlist);
   };
 
+    const fetchProducts = async() => {
+      const response = await fetch(`${baseURL}/productapi/list`);
+      const data = await response.json();
+
+      const productItems = [{items:{}}];
+
+      productItems.items = data.map((item)=>{
+        return {
+          id: item.productId,
+          name: item.productName
+        }
+      })
+
+      dispatch(ProductActions.replaceProduct(productItems));
+
+      console.log(productItems)
+    }
+
   useEffect(() => {
     if (name) {
       fetchData();
     }
+    fetchProducts();
   }, []);
 
   const showcartHandler = () => {
@@ -77,8 +97,7 @@ function Home(props) {
       {showcart && <Cart onClose={hidecartHandler} />}
       {showorder && <Order onClose={hideorderHandler} />}
       <Header onShowcart={showcartHandler} onShowOrders={showorderHandler} />
-      <h1>Welcome</h1>
-      <br />
+      <h2>Welcome</h2>
       <div className={classes["main-image"]}>
         <img src={bannerimg} />
       </div>

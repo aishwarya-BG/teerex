@@ -42,8 +42,9 @@ function Order(props) {
                 <td>{item.orderStatus}</td>
                 <td>{item.totalPrice}</td>
                 <td>
+                  <button className="btn btn-primary">View</button>{" "}
                   {item.orderStatus === "Placed" && (
-                    <button className = {classes.button}
+                    <button className="btn btn-danger"
                       onClick={() => {
                         cancelHandler(item.orderId);
                       }}

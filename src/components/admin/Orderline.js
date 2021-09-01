@@ -3,11 +3,15 @@ import React from "react";
 import classes from "./NewCategory.module.css";
 import { useState, useEffect } from "react";
 import { baseURL } from "../../constants/constant";
+import OrderlineProduct from "./OrderlineProduct";
+
 
 function Orderline(props) {
 
     const [orderline, setOrderline] = useState([]);
     const [shipping, setShipping] = useState([]);
+
+
 
     useEffect(() => {
         fetch(`${baseURL}/orderlineapi/byorderid/${props.orderid}`)
@@ -26,19 +30,14 @@ function Orderline(props) {
         <thead>
           <tr>
             <th scope="col">Orderline ID</th>
-            <th  scope="col">Product ID</th>
+            <th  scope="col">Product</th>
             <th scope="col">Quantity</th>
             <th scope="col">Price</th>
           </tr>
         </thead>
         <tbody>
           {orderline.map((item) => (
-            <tr key={item.productId}>
-              <th scope="row">{item.orderLineItemId}</th>
-              <th scope="row">{item.productId}</th>
-              <td>{item.quantity}</td>
-              <td>{item.price}</td>
-            </tr>
+            <OrderlineProduct productId={item.productId} orderLineItemId={item.orderLineItemId} quantity={item.quantity} price={item.price}/>
           ))}
         </tbody>
       </table>
